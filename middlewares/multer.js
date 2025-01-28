@@ -1,8 +1,16 @@
-import multer from "multer";
+import multer from 'multer';
+import path from 'path';
 
+// Set storage engine for image uploads
 const storage = multer.diskStorage({
-  filename: function (req, file, callback) {
-    callback(null, file.originalname);
+  destination: (req, file, cb) => {
+    cb(null, './uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(
+      null,
+      file.fieldname + '-' + Date.now() + path.extname(file.originalname)
+    );
   },
 });
 
