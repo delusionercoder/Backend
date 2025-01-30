@@ -8,3 +8,4 @@ const adminRouter = express.Router();
 adminRouter.post("/add-lawyer", upload.single("image"), addLawyer);
 
 export default adminRouter;
+//update
